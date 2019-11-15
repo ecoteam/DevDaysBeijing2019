@@ -102,7 +102,53 @@ npm install -g yo generator-office
   ```
 6. 在Add-in中按下 `Run` 按钮，可以看到，在工作簿中插入了一些股票数据。
 
-7. 打开 `src\taskpane\components\App.tsx` ，将其替换为以下代码。
+7. 在 `src\taskpane\components\` 路径下创建 `Data.tsx` 文件，将其替换为以下代码。
+  ```typescript
+    import * as React from "react";
+    import { Button, ButtonType } from "office-ui-fabric-react";
+
+    export interface DataProps {
+      rangeAddress: string;
+    }
+
+    export default class Data extends React.Component<DataProps> {
+      click = async () => {    
+        //const { rangeAddress } = this.props;
+        try {
+          await Excel.run(async context => {
+            /**
+            * Insert your Excel code here
+            */
+            let sheet = context.workbook.worksheets.getItem("Sample");
+            if(this.props.rangeAddress != null && this.props.rangeAddress != ""){
+                let range = sheet.getRange(this.props.rangeAddress);
+                let chart = sheet.charts.add(Excel.ChartType.pie, range, Excel.ChartSeriesBy.columns);
+                chart.dataLabels.showValue = false;
+            }
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      render() {
+        return (
+          <section className="ms-welcome__main">
+            <Button
+                className="ms-welcome__features"
+                buttonType={ButtonType.hero}
+                iconProps={{ iconName: "Chart" }}
+                onClick={this.click}
+              >
+                Add Chart
+              </Button>
+          </section>
+        );
+      }
+    }
+  ```
+
+8. 打开 `src\taskpane\components\App.tsx` ，将其替换为以下代码。
   ```typescript
     import * as React from "react";
     import { Button, ButtonType } from "office-ui-fabric-react";
@@ -202,52 +248,6 @@ npm install -g yo generator-office
             </HeroList>
             <Data rangeAddress={this.state.rangeAddress}></Data>
           </div>
-        );
-      }
-    }
-  ```
-
-7. 在 `src\taskpane\components\` 路径下创建 `Data.tsx` 文件，将其替换为以下代码。
-  ```typescript
-    import * as React from "react";
-    import { Button, ButtonType } from "office-ui-fabric-react";
-
-    export interface DataProps {
-      rangeAddress: string;
-    }
-
-    export default class Data extends React.Component<DataProps> {
-      click = async () => {    
-        //const { rangeAddress } = this.props;
-        try {
-          await Excel.run(async context => {
-            /**
-            * Insert your Excel code here
-            */
-            let sheet = context.workbook.worksheets.getItem("Sample");
-            if(this.props.rangeAddress != null && this.props.rangeAddress != ""){
-                let range = sheet.getRange(this.props.rangeAddress);
-                let chart = sheet.charts.add(Excel.ChartType.pie, range, Excel.ChartSeriesBy.columns);
-                chart.dataLabels.showValue = false;
-            }
-          });
-        } catch (error) {
-          console.error(error);
-        }
-      };
-
-      render() {
-        return (
-          <section className="ms-welcome__main">
-            <Button
-                className="ms-welcome__features"
-                buttonType={ButtonType.hero}
-                iconProps={{ iconName: "Chart" }}
-                onClick={this.click}
-              >
-                Add Chart
-              </Button>
-          </section>
         );
       }
     }

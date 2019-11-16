@@ -30,24 +30,24 @@ npm install -g yo generator-office
 
   * Choose a project type: `Office Add-in Task Pane project using React framework`
   * Choose a script type: `TypeScript`
-  * What do you want to name your add-in? `DevDaysBeijing2019`
+  * What do you want to name your add-in? `ReactAddInDemo`
   * Which Office client application would you like to support? `Excel`
 
     或使用以下命令行创建项目：
     ```cmd
-    yo office react ReactAddInDemo excel  --ts
+    yo office react ReactAddInDemo excel --ts
     ```
 
 3. 输入以下命令以在Visual Studio Code中打开项目。
 
     ```cmd
-    cd DevDaysBeijing2019
+    cd ReactAddInDemo
     code .
     ```
 
    您也可以启动Visual Studio Code后，执行以下步骤来打开项目。
    * 选择File -> Open Folder
-   * 选择DevDaysBeijing2019目录
+   * 选择ReactAddInDemo目录
 
 
 4. 打开 `src\taskpane\components\App.tsx` 文件，将
@@ -85,11 +85,11 @@ npm install -g yo generator-office
          let expensesTable = sheet.tables.add('A1:B1', true);
          expensesTable.getHeaderRowRange().values = [["Company","Price"]];
          expensesTable.rows.add(null, [
-             ["orange", 98],
+             ["Orange", 98],
              ["Banana", 109],
              ["Peach", 173],
              ["Grapefruit", 182],
-             ["strawberry", 60],
+             ["Strawberry", 60],
          ]);
        });
      } catch (error) {
@@ -103,7 +103,7 @@ npm install -g yo generator-office
    npm start
    ```
 
-6. 在Add-in中按下 `Run` 按钮，可以看到，在工作簿中插入了一些股票数据。
+6. 在Add-in中按下 `Run` 按钮，可以看到，在工作簿中插入了一些水果价格数据。
 
 7. 在 `src\taskpane\components\` 路径下创建 `Data.tsx` 文件，将其替换为以下代码。
    ```typescript
@@ -207,11 +207,11 @@ npm install -g yo generator-office
            let table = sheet.tables.add('A1:B1', true);
            table.getHeaderRowRange().values = [["Company", "Price"]];
            table.rows.add(null, [
-             ["orange", 98],
-             ["banana",190],
-             ["peach", 173],
-             ["grapefruit", 182],
-             ["strawberry", 60]
+             ["Rrange", 98],
+             ["Banana",190],
+             ["Peach", 173],
+             ["Grapefruit", 182],
+             ["Strawberry", 60]
            ]);
            let range = table.getRange();
            range.load("Address");
@@ -258,13 +258,13 @@ npm install -g yo generator-office
 
 8. 如果Excel已经被关闭，在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以启动Excel并加载Add-in。
 
-    ```cmd
-    npm start
-    ```
+   ```cmd
+   npm start
+   ```
 
    如果Excel仍然开着，刷新Add-in。
 
-9. 在Add-in中依次按下 `>Add Data` 按钮和 `>Add Chart` 按钮，可以看到，在工作簿中插入了一些股票数据，以及相对应的图表。
+9. 在Add-in中依次按下 `>Add Data` 按钮和 `>Add Chart` 按钮，可以看到，在工作簿中插入了一些水果价格数据，以及相对应的图表。
 
 # 集成Custom Functions
 
@@ -325,17 +325,7 @@ npm install -g yo generator-office
 
 6. 在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以重新加载Add-in。
 
-    ```cmd
-    npm start
-    ```
-
-7. 在Excel的`B1`单元格中，输入`Contoso.getStockPrice(A1)`。
-
-8. 在A1单元格中输入`MSFT`，可以看到B1单元格自动进行了重算，并且获取了微软的股票数据。
-
-9. 在A2:A4单元格中分别输入`AAPL`, `AMZN`, `BABA`等，然后将B1单元格填充至B2:B4。可以看到Custom Functions和Excel内置函数一样，可以自动更新参数，并自动进行计算。
-
-10. 打开`functions.ts`文件，将`getStockPrice`的相关代码替换为以下代码。
+7. 打开`functions.ts`文件，将`getStockPrice`的相关代码替换为以下代码。
 
     ```typescript
     /**
@@ -366,6 +356,12 @@ npm install -g yo generator-office
       }
     }
     ```
+
+8. 在Excel的`B1`单元格中，输入`Contoso.getStockPrice(A1)`。
+
+9. 在A1单元格中输入`MSFT`，可以看到B1单元格自动进行了重算，并且获取了微软的股票数据。
+
+10. 在A2:A4单元格中分别输入`AAPL`, `AMZN`, `BABA`等，然后将B1单元格填充至B2:B4。可以看到Custom Functions和Excel内置函数一样，可以自动更新参数，并自动进行计算。
 
 11. 在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以重新加载Add-in。
 

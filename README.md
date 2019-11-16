@@ -283,7 +283,7 @@ npm install -g yo generator-office
     * @param symbol Stock symbol.
     * @returns Stock price.
     */
-    export function getStockPrice(symbol: string): Promise<string> {
+    function getStockPrice(symbol: string): Promise<string> {
       let url = "https://mockstockprice.azurewebsites.net/stocks/" + symbol;
       return new Promise((resolve, reject) => {
         fetch(url)
@@ -316,7 +316,7 @@ npm install -g yo generator-office
     * @returns Stock price.
     * @streaming
     */
-    export function getStockPrice(symbol: string, invocation: CustomFunctions.StreamingInvocation<string>) {
+    function getStockPrice(symbol: string, invocation: CustomFunctions.StreamingInvocation<string>) {
       let url = "https://mockstockprice.azurewebsites.net/stocks/" + symbol;
       const timer = setInterval(() => {
         fetch(url)

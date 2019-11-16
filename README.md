@@ -357,16 +357,20 @@ npm install -g yo generator-office
     }
     ```
 
-8. 在Excel的`B1`单元格中，输入`Contoso.getStockPrice(A1)`。
+8. 在Excel的B1单元格中，输入`Contoso.getStockPrice(A1)`。
 
 9. 在A1单元格中输入`MSFT`，可以看到B1单元格自动进行了重算，并且获取了微软的股票数据。
 
-10. 在A2:A4单元格中分别输入`AAPL`, `AMZN`, `BABA`等，然后将B1单元格填充至B2:B4。可以看到Custom Functions和Excel内置函数一样，可以自动更新参数，并自动进行计算。
-
-11. 在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以重新加载Add-in。
+10. 在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以重新加载Add-in。
 
     ```cmd
     npm start
     ```
 
-12. Excel中之前输入的信息现在将会自动刷新。图表也会随着数据的刷新而变化。
+11. 打开之前创建的基于React的Add-in，插入数据和图表。
+
+12. 在B2单元格中，输入`Contoso.getStockPrice(A1)`。
+
+13. 将B1单元格填充至B2:B4。可以看到Custom Functions和Excel内置函数一样，可以自动更新参数，并自动进行计算。
+
+13. Excel中之前输入的信息现在将会自动刷新。图表也会随着数据的刷新而变化。

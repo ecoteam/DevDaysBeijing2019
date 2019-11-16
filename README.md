@@ -103,7 +103,7 @@ npm install -g yo generator-office
    npm start
    ```
 
-6. 在Add-in中按下 `Run` 按钮，可以看到，在工作簿中插入了一些水果价格数据。
+6. 在Add-in中按下 `Run` 按钮，可以看到，在工作簿中插入了一些股票数据。
 
 7. 在 `src\taskpane\components\` 路径下创建 `Data.tsx` 文件，将其替换为以下代码。
    ```typescript
@@ -264,7 +264,7 @@ npm install -g yo generator-office
 
    如果Excel仍然开着，刷新Add-in。
 
-9. 在Add-in中依次按下 `>Add Data` 按钮和 `>Add Chart` 按钮，可以看到，在工作簿中插入了一些水果价格数据，以及相对应的图表。
+9. 在Add-in中依次按下 `>Add Data` 按钮和 `>Add Chart` 按钮，可以看到，在工作簿中插入了一些股票数据，以及相对应的图表。
 
 # 集成Custom Functions
 

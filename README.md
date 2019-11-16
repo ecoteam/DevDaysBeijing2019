@@ -231,7 +231,7 @@ npm install -g yo generator-office
              <Button
                className="ms-welcome__action"
                buttonType={ButtonType.hero}
-               iconProps={{iconName: "ChevronRight"}}
+               iconProps={ {iconName: "ChevronRight"} }
                onClick={this.click}
              >
                Add Data

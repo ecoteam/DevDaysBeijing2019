@@ -258,36 +258,23 @@ npm install -g yo generator-office
 
 9. 在Add-in中依次按下 `>Add Data` 按钮和 `>Add Chart` 按钮，可以看到，在工作簿中插入了一些股票数据，以及相对应的图表。
 
-# 集成Custom Functions
+# 使用Custom Functions
 
-在本节中，您将使用Yeoman generator for Office Add-ins创建一个集成了Custom Functions的Office Add-ins项目。您将创建一个Custom Function，并通过其从Web Service中获取数据。
+在本节中，您将打开ScriptLab创建一个Custom Function，并通过其从Web Service中获取数据。
 
-1. 在命令提示符中，输入以下命令创建项目。
+1. 选择 Insert -> Get Add-ins 打开 Office Add-ins 窗口。在搜索窗口输入 Script 后搜索并安装 Script Lab。
 
-    ```cmd
-    yo office excel-functions CustomFunctionDemo excel --ts
-    ```
+2. 在Ribbon中找到Script Lab，点击 Code 打开任务面板。
 
-2. 输入以下命令以在Visual Studio Code中打开项目。
+3. 在Sample中搜索Custom，找到Custom Function的Sample，选择Basic Custom Function。
 
-    ```cmd
-    cd CustomFunctionDemo
-    code .
-    ```
+4. 将其名称改为 DevDays。这将作为Custom Function的命令空间。
 
-   您也可以启动Visual Studio Code后，执行以下步骤来打开项目。
-   * 选择File -> Open Folder
-   * 选择CustomFunctionDemo目录
+5. 点击Register注册。
 
-3. 在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以启动Excel并加载Add-in。
+6. 在Excel单元格中输入`=SCRIPTLAB.DEVDAYS.SPHEREVOLUME(2)`后回车。可以看到其进行了计算并返回了半径为2的球的体积。
 
-    ```cmd
-    npm start
-    ```
-
-4. 在Excel中，在任意单元格中输入`=Contoso.Add(1,2)`。此时您将看到其进行了计算，并且显示了计算结果`3`。
-
-5. 打开`functions.ts`文件，在文件最后粘贴以下代码。
+7. 回到Code任务面板，将DevDays中的代码替换为以下代码。
 
     ```typescript
     /**
@@ -315,9 +302,11 @@ npm install -g yo generator-office
     }
     ```
 
-6. 在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以重新加载Add-in。
+8. 在Excel的B1单元格中，输入`Contoso.getStockPrice(A1)`。
 
-7. 打开`functions.ts`文件，将`getStockPrice`的相关代码替换为以下代码。
+9. 在A1单元格中输入`MSFT`，可以看到B1单元格自动进行了重算，并且获取了微软的股票数据。
+
+10. 回到Code任务面板，将DevDays中的代码替换为以下代码。
 
     ```typescript
     /**
@@ -349,20 +338,10 @@ npm install -g yo generator-office
     }
     ```
 
-8. 在Excel的B1单元格中，输入`Contoso.getStockPrice(A1)`。
-
-9. 在A1单元格中输入`MSFT`，可以看到B1单元格自动进行了重算，并且获取了微软的股票数据。
-
-10. 在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以重新加载Add-in。
-
-    ```cmd
-    npm start
-    ```
-
 11. 打开之前创建的基于React的Add-in，插入数据和图表。
 
-12. 在B2单元格中，输入`Contoso.getStockPrice(A1)`。
+12. 在B2单元格中，输入`Contoso.getStockPrice(A2)`。
 
-13. 将B1单元格填充至B2:B4。可以看到Custom Functions和Excel内置函数一样，可以自动更新参数，并自动进行计算。
+13. 将B2单元格填充至B3:B6。可以看到Custom Functions和Excel内置函数一样，可以自动更新参数，并自动进行计算。
 
 13. Excel中之前输入的信息现在将会自动刷新。图表也会随着数据的刷新而变化。

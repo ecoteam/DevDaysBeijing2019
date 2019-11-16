@@ -23,22 +23,10 @@ npm install -g yo generator-office
 1. 打开目标文件夹，在命令提示符中，输入以下命令创建项目。
 
     ```cmd
-    yo office
+    yo office react ReactAddInDemo excel  --ts
     ```
 
-2. 根据提示和下方信息进行选择。
-
-  * Choose a project type: `Office Add-in Task Pane project using React framework`
-  * Choose a script type: `TypeScript`
-  * What do you want to name your add-in? `ReactAddInDemo`
-  * Which Office client application would you like to support? `Excel`
-
-    或使用以下命令行创建项目：
-    ```cmd
-    yo office react ReactAddInDemo excel --ts
-    ```
-
-3. 输入以下命令以在Visual Studio Code中打开项目。
+2. 输入以下命令以在Visual Studio Code中打开项目。
 
     ```cmd
     cd ReactAddInDemo
@@ -50,7 +38,7 @@ npm install -g yo generator-office
    * 选择ReactAddInDemo目录
 
 
-4. 打开 `src\taskpane\components\App.tsx` 文件，将
+3. 打开 `src\taskpane\components\App.tsx` 文件，将
    ```typescript
    click = async () => {
      try {
@@ -97,15 +85,15 @@ npm install -g yo generator-office
      }
    };
    ```
-5. 在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以启动Excel并加载Add-in。
+4. 在Visual Studio Code中按下 `Ctrl+` ` 键，打开命令提示符，执行以下命令以启动Excel并加载Add-in。
 
    ```cmd
    npm start
    ```
 
-6. 在Add-in中按下 `Run` 按钮，可以看到，在工作簿中插入了一些水果价格数据。
+5. 在Add-in中按下 `Run` 按钮，可以看到，在工作簿中插入了一些水果价格数据。
 
-7. 在 `src\taskpane\components\` 路径下创建 `Data.tsx` 文件，将其替换为以下代码。
+6. 在 `src\taskpane\components\` 路径下创建 `Data.tsx` 文件，将其替换为以下代码。
    ```typescript
    import * as React from "react";
    import { Button, ButtonType } from "office-ui-fabric-react";
@@ -151,7 +139,7 @@ npm install -g yo generator-office
    }
    ```
 
-8. 打开 `src\taskpane\components\App.tsx` ，将其替换为以下代码。
+7. 打开 `src\taskpane\components\App.tsx` ，将其替换为以下代码。
    ```typescript
    import * as React from "react";
    import { Button, ButtonType } from "office-ui-fabric-react";
